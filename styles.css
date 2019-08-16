@@ -25,7 +25,8 @@ header {
   display: inline-block;
   font-size: 1.8rem;
   font-weight: 700;
-  margin: 12px 0;
+  color: rgb(245, 245, 245);
+  margin: 0;
 }
 
 #start-screen {
@@ -35,7 +36,6 @@ header {
   background-color: rgba(214, 213, 213, 0.6);
   padding: 24px 15px 39px 15px;
 }
-
 #start-screen h2 {
   font-size: 2rem;
 }
@@ -44,11 +44,12 @@ header {
   line-height: 2.5rem;
   padding: 9px 24px;
   margin: 24px auto;
-
 }
-.startButton:hover {
+.startButton:hover,
+.submit-button:hover {
   cursor: pointer;
-  color: grey;
+  color: rgb(94, 93, 93);
+  background-color: lightgrey;
 }
 
 #question-screen,
@@ -56,5 +57,32 @@ header {
 #wrong-screen,
 #result-screen {
   display: none;
+  width: 60%;
+  margin: 30px auto 10px auto;
+  text-align: center;
+  background-color: rgba(214, 213, 213, 0.6);
+  padding: 24px 12px 24px 12px;
 }
-
+h2 {
+  font-size: 1.9rem;
+  margin: 9px 0;
+}
+form {
+  font-size: 1.6rem;
+  font-weight: 600;
+  text-align: left;
+  margin: 0 4vw;
+  line-height: 2.4rem;
+}
+form p {
+  margin: 15px 0;
+}
+input[type=radio] {
+  width: 3vw;
+  height: 3vh;
+}
+.submit-button {
+  font-size: 1.2rem;
+  padding: 6px 18px;
+  margin: 30px auto;
+}
