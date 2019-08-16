@@ -39,9 +39,20 @@ function startGame() {
   wrongAnswers = 0;
   
   $('#start-screen').on('click', '.startButton', function(event){
-    $(this).hide();
-    $('#question-screen').show();
+    $('#start-screen').hide();
+    generateQuestion();
   })
 }
 
-//$(startGame);
+function generateQuestion(){
+  questionTracker++;
+  $('.currentQuest').text(questionTracker)
+  $('#question-screen').css('display', 'block');
+  $('.questionNumber').text(questionTracker);
+  
+
+}
+
+
+
+$(startGame);

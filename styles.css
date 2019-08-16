@@ -3,7 +3,7 @@
 }
 
 body {
-  background: url(./fall-lake.jpg) no-repeat;
+  background: url(./fall-lake.jpg) no-repeat fixed;
   background-size: cover;
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
@@ -47,6 +47,7 @@ header {
 
 }
 .startButton:hover {
+  cursor: pointer;
   color: grey;
 }
 
