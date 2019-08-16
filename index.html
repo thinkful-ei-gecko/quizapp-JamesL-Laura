@@ -5,29 +5,42 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link href="styles.css" rel="stylesheet" type="text/css" />
-  <title>Document</title>
+  <title>Minnesota Trivia</title>
 </head>
 <body>
-  <header>
-
+  <header role='banner'>
+    <h1>Minnesota Trivia</h1>
+    <div class='question-count'>
+      <p>Question: <span class='currentQuest'>0</span>/5</p>
+    </div>
+    <div class='score-count'>
+      <p>Score: <span class='currentScore'>0 </span>correct</p>
+    </div>
   </header>
   <main role='main'>
     <div id='start-screen'>
-
+      <h2>How well do you know the state of Minnesota?</h2>
+      <button class='startButton'>Start Quiz</button>
     </div>
     <div id='question-screen'>
-      <form>
-        
-      </form>
+      <h2>Question number <span class='questionNumber'></span></h2>
     </div>
     <div id='correct-screen'>
-
+      <p>YOU ARE CORRECT!</p>
+      <button class='nextQuestion'>Go to next question</button>
     </div>
     <div id='wrong-screen'>
-
+      <p>You are INCORRECT!</p>
+      <p>Correct answer is <span class='correctAnswer'></span></p>
+      <button class='nextQuestion'>Go to next question</button>
     </div>
     <div id='result-screen'>
-
+      <h2>Your Results!</h2>
+      <p class='scoreRecap'>
+        Correct: <span class='rightScore'></span>
+        Incorrect: <span class='wrongScore'></span>
+      </p>
+      <p class='finalMessage'></p>
     </div>
   </main>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
