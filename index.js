@@ -45,16 +45,33 @@ let wrongAnswers = 0;
 
 function displayCorrectScreen() {
   rightAnswers++;
-  //update the tally display
-  //show correct-screen
-  generateQuestion(); //go back to show next question  
+
+  $('.currentScore').text(rightAnswers);//update the tally display
+  $('.correct-screen').css('display', 'block');//show correct-screen
+  $('.correct-screen').html(`<p>YOU ARE CORRECT!</p>
+  <p>${questionBank[questionTracker-1].correctFeedback}</p>
+  <button class='nextQuestion'>Go to next question</button>`);
+  
+  $('.correct-screen').on('click', '.nextQuestion', function(){
+    event.preventDefault();
+    generateQuestion(); //show next question
+    $('.correct-screen').css('display', 'none');
+  });
 }
 
 function displayWrongScreen() {
   wrongAnswers++;
-  //update score tally display
-  //show wrong-screen
-  generateQuestion(); //proceed to next question
+  $('.wrong-screen').css('display', 'block');//show correct-screen
+
+  $('.wrong-screen').html(`<p>You are INCORRECT!</p>
+  <p>Correct answer is <span class='correctAnswer'>${questionBank[questionTracker-1].incorrectFeedback}</span></p>
+  <button class='nextQuestion'>Go to next question</button>`);
+  
+  $('.nextQuestion').on('click', function() {
+    event.preventDefault();
+    generateQuestion(); // to show next question
+    $('.wrong-screen').css('display', 'none');
+  });
 }
 
 
@@ -62,12 +79,12 @@ function generateQuestion(){
   questionTracker++;
 
   $('.currentQuest').text(questionTracker); //to display current question number in header
-  $('#question-screen').css('display', 'block'); // to show the question screen view -make it not hidden
+  $('.question-screen').css('display', 'block'); // to show the question screen view -make it not hidden
   $('.questionNumber').text(questionTracker); //to display current question number in question view
   
   $('.questionAndChoices').html(`
     <p class='questionItem'>${questionBank[questionTracker-1].question}</p>
-    <input type='radio' id='option1' value='false' name='Q${questionTracker}' required />
+    <input type='radio' id='option1' value='false' name='Q${questionTracker}' />
     <label for='option1'>${questionBank[questionTracker-1].answers[0]}</label>
     <br/>
     <input type='radio' id='option2' value='false' name='Q${questionTracker}' />
@@ -87,28 +104,31 @@ function generateQuestion(){
     if (!$('input').is(':checked')) {
       $('.submit-button').preventDefault();
     }
-    if ($('input[value=true]:checked') ) {
-      //hide this screen
-      //displayCorrectScreen();
-    } else if ($('input[value=false]:checked') ) {
-      //hide this screen
-      //displayWrongScreen();
+    else if ($('input[value=true]').is(':checked') ) {
+      event.preventDefault();
+      displayCorrectScreen();
+      $('.question-screen').css('display', 'none'); //hide the Q screen
+    } 
+    else if ($('input[value=false]').is(':checked') ) {
+      event.preventDefault();
+      displayWrongScreen();
+      $('.question-screen').css('display', 'none');
     }
   });
 }
 
 
 function startGame() {
-  $('#start-screen').show();
+  $('.start-screen').css('display', 'block');
   
   questionTracker = 0;
   rightAnswers = 0;
   wrongAnswers = 0;
   
-  $('#start-screen').on('click', '.startButton', function(event){
-    $('#start-screen').hide();
+  $('.start-screen').on('click', '.startButton', function(event){
+    $('.start-screen').css('display', 'none');
     generateQuestion();
-  })
+  });
 }
 
 $(startGame);
