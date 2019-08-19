@@ -10,21 +10,21 @@
 <body>
   <header role='banner'>
     <h1>Minnesota Trivia</h1>
-    <div class='tracker'>
+    <div class='tracker' aria-live='polite'>
       <p class='question-tracker'>Question: <span class='currentQuest'>0</span>/5</p>
       <p class='score-tracker'>Score: <span class='currentScore'>0</span> correct</p>
     </div>
   </header>
   <main role='main'>
 
-    <div class='start-screen'>
+    <div class='start-screen' aria-live='polite'>
       <h2>How well do you know</br>the state of Minnesota?</h2>
       <button class='startButton'>Start Quiz</button>
     </div>
 
     <div class='question-screen'>
       <h2>QUESTION <span class='questionNumber'></span></h2>
-      <form id='questionAndChoices'>
+      <form id='questionAndChoices' aria-live='polite'>
       </form>
     </div>
 

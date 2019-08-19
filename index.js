@@ -64,7 +64,7 @@ function displayWrongScreen() {
   $('.wrong-screen').css('display', 'block');//show correct-screen
 
   $('.wrong-screen').html(`<p>You are INCORRECT!</p>
-  <p>Correct answer is <span class='correctAnswer'>${questionBank[questionTracker-1].incorrectFeedback}</span></p>
+  <p>The correct answer is: <br/><span class='correctAnswer'>${questionBank[questionTracker-1].incorrectFeedback}</span></p>
   <button class='nextQuestion'>Continue</button>`);
   
   $('.nextQuestion').on('click', function() {
