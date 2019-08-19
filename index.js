@@ -44,15 +44,15 @@ let wrongAnswers = 0;
 
 
 function displayCorrectScreen() {
+  
   rightAnswers++;
-
   $('.currentScore').text(rightAnswers);//update the tally display
   $('.correct-screen').css('display', 'block');//show correct-screen
   $('.correct-screen').html(`<p>YOU ARE CORRECT!</p>
   <p>${questionBank[questionTracker-1].correctFeedback}</p>
   <button class='nextQuestion'>Go to next question</button>`);
   
-  $('.correct-screen').on('click', '.nextQuestion', function(){
+  $('.nextQuestion').on('click', function(){
     event.preventDefault();
     generateQuestion(); //show next question
     $('.correct-screen').css('display', 'none');
@@ -99,18 +99,16 @@ function generateQuestion(){
     <button type='submit' class='submit-button'>Submit</button>`);
   $(questionBank[questionTracker-1].rightAnswer).attr('value', 'true');
 
-  $('form').on('click', '.submit-button', function() {
+  $('form').on('click', '.submit-button', function(event) {
     // If no answer is chosen, prevent submit button
-    if (!$('input').is(':checked')) {
-      $('.submit-button').preventDefault();
-    }
-    else if ($('input[value=true]').is(':checked') ) {
-      event.preventDefault();
+    event.preventDefault();
+    
+    if ($('input[value=true]').is(':checked') ) {
+      
       displayCorrectScreen();
       $('.question-screen').css('display', 'none'); //hide the Q screen
     } 
     else if ($('input[value=false]').is(':checked') ) {
-      event.preventDefault();
       displayWrongScreen();
       $('.question-screen').css('display', 'none');
     }
