@@ -29,7 +29,10 @@ header {
   color: rgb(245, 245, 245);
   margin: 0;
 }
-
+button:hover,
+input:hover {
+  cursor: pointer;
+}
 .start-screen {
   display: none;
   width: 60%;
@@ -67,7 +70,7 @@ header {
   padding: 24px 12px 24px 12px;
 }
 h2 {
-  font-size: 1.9rem;
+  font-size: 2rem;
   margin: 9px 0;
 }
 form {
@@ -81,9 +84,18 @@ form p {
   margin: 15px 0;
   line-height: 1.9rem;
 }
+label {
+  display: block;
+}
 input[type=radio] {
   width: 3vw;
   height: 3vh;
+}
+.correctAnswer,
+.correctFeedback,
+.finalTally {
+  font-size: 2rem;
+  font-style: italic;
 }
 .submit-button,
 .nextQuestion,

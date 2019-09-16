@@ -1,5 +1,7 @@
 'use strict';
 
+/* global $ */
+
 const questionBank = [
   {
     question: 'What is the nickname of Minnesota?',
@@ -48,8 +50,8 @@ function displayCorrectScreen() {
   rightAnswers++;
   $('.currentScore').text(rightAnswers);//update the tally display
   $('.correct-screen').css('display', 'block');//show correct-screen
-  $('.correct-screen').html(`<p>YOU ARE CORRECT!</p>
-  <p>${questionBank[questionTracker-1].correctFeedback}</p>
+  $('.correct-screen').html(`<h3>YOU ARE CORRECT!</h3>
+  <p class='correctFeedback'>${questionBank[questionTracker-1].correctFeedback}</p>
   <button class='nextQuestion'>Continue</button>`);
   
   $('.nextQuestion').on('click', function(){
@@ -63,8 +65,9 @@ function displayWrongScreen() {
   wrongAnswers++;
   $('.wrong-screen').css('display', 'block');//show correct-screen
 
-  $('.wrong-screen').html(`<p>You are INCORRECT!</p>
-  <p>The correct answer is: <br/><span class='correctAnswer'>${questionBank[questionTracker-1].incorrectFeedback}</span></p>
+  $('.wrong-screen').html(`<h3>Sorry! That is incorrect.</h3>
+  <p>The correct answer is:</p>
+  <p class='correctAnswer'>${questionBank[questionTracker-1].incorrectFeedback}</p>
   <button class='nextQuestion'>Continue</button>`);
   
   $('.nextQuestion').on('click', function() {
@@ -79,26 +82,27 @@ function generateQuestion(){
   questionTracker++;
   if(questionTracker < questionBank.length+1){
 
-  $('.currentQuest').text(questionTracker); //to display current question number in header
-  $('.question-screen').css('display', 'block'); // to show the question screen view -make it not hidden
-  $('.questionNumber').text(questionTracker); //to display current question number in question view
-  
-  $('#questionAndChoices').html(`
-    <p class='questionItem'>${questionBank[questionTracker-1].question}</p>
-    <input type='radio' id='option1' value='false' name='Q${questionTracker}' />
-    <label for='option1'>${questionBank[questionTracker-1].answers[0]}</label>
-    <br/>
-    <input type='radio' id='option2' value='false' name='Q${questionTracker}' />
-    <label for='option2'>${questionBank[questionTracker-1].answers[1]}</label>
-    <br/>
-    <input type='radio' id='option3' value='false' name='Q${questionTracker}' />
-    <label for='option3'>${questionBank[questionTracker-1].answers[2]}</label>
-    <br/>
-    <input type='radio' id='option4' value='false' name='Q${questionTracker}' />
-    <label for='option4'>${questionBank[questionTracker-1].answers[3]}</label>
-    <br/>
-    <button type='submit' class='submit-button'>Submit</button>`);
-  $(questionBank[questionTracker-1].rightAnswer).attr('value', 'true');
+    $('.currentQuest').text(questionTracker); //to display current question number in header
+    $('.question-screen').css('display', 'block'); // to show the question screen view -make it not hidden
+    $('.questionNumber').text(questionTracker); //to display current question number in question view
+    
+    $('#questionAndChoices').html(`
+      <p class='questionItem'>${questionBank[questionTracker-1].question}</p>
+      
+      <label for='option1'><input type='radio' id='option1' value='false' name='Q${questionTracker}' />
+      ${questionBank[questionTracker-1].answers[0]}</label>
+      
+      <label for='option2'><input type='radio' id='option2' value='false' name='Q${questionTracker}' />
+      ${questionBank[questionTracker-1].answers[1]}</label>
+      
+      <label for='option3'><input type='radio' id='option3' value='false' name='Q${questionTracker}' />
+      ${questionBank[questionTracker-1].answers[2]}</label>
+      
+      <label for='option4'><input type='radio' id='option4' value='false' name='Q${questionTracker}' />
+      ${questionBank[questionTracker-1].answers[3]}</label>
+      
+      <button type='submit' class='submit-button'>Submit</button>`);
+    $(questionBank[questionTracker-1].rightAnswer).attr('value', 'true');
   }
   else{
     resultsDisplay();
@@ -108,15 +112,13 @@ function generateQuestion(){
 
 function resultsDisplay(){
   $('.result-screen').css('display', 'block');
-  $(`.result-screen`).html(`<h2>Your Results!</h2>
-    <p>
-      Correct: ${rightAnswers}
-    </p>
-    <p>
-      Incorrect: ${wrongAnswers}
-    </p>
+
+  $('.result-screen').html(`<h2>Your Results!</h2>
+    <p class='finalTally'>Correct: ${rightAnswers}</p>
+    <p class='finalTally'>Incorrect: ${wrongAnswers}</p>
     <button class='restart-button'>Take Quiz Again</button>`);
-    $('.restart-button').on('click', function(){
+
+  $('.restart-button').on('click', function(){
     $('.result-screen').css('display', 'none')
     questionTracker = 0;
     rightAnswers = 0;
