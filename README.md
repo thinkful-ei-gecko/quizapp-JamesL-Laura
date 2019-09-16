@@ -1,9 +1,9 @@
 # quizapp-JamesL-Laura
 A simple multiple-choice style quiz game. The theme for this version is trivia about the state of Minnesota.
 
-## This iss a pair-programming project.  The collaborators are James L. and Laura E.
+## This is a pair-programming project by James L. and Laura E.
 
-###This app is built with: 
+### This app is built with: 
 - html 
 - css
 - javascript 
